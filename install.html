@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تثبيت تطبيق متوسطة المتعال</title>
+<style>
+:root{--navy:#1B2A4A;--or:#F26A1B;--bg:#FFF8F0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--navy);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.8}
+header{background:linear-gradient(135deg,#F9A24D,var(--or));color:#fff;text-align:center;padding:28px 16px 36px;border-radius:0 0 40px 40px}
+header h1{margin:0;font-size:24px}header p{margin:6px 0 0;opacity:.95}
+main{max-width:520px;margin:-18px auto 30px;padding:0 16px}
+.card{background:#fff;border-radius:18px;padding:16px 18px;margin-bottom:14px;box-shadow:0 2px 10px rgba(27,42,74,.08)}
+.card h2{margin:0 0 8px;font-size:18px}
+ol{margin:0;padding-inline-start:22px}li{margin-bottom:6px}
+.btn{display:block;width:100%;text-align:center;border:0;border-radius:14px;padding:14px;font-size:17px;font-weight:700;text-decoration:none;margin-top:10px;cursor:pointer}
+.go{background:var(--or);color:#fff}.cp{background:#FFE9D6;color:var(--navy)}
+.warn{background:#FFF1C9;border:1.5px solid #E0A800;display:none}
+small{color:#6B7280}
+.hide{display:none}
+</style></head><body>
+<header><h1>متوسطة المتعال للبنين</h1><p>تثبيت التطبيق على هاتفك</p></header>
+<main>
+<div id="inapp" class="card warn"><h2>⚠️ افتح الرابط في المتصفح</h2>
+أنت تفتح الصفحة من داخل تطبيق آخر (واتساب أو فيسبوك...). اضغط زر القائمة <b>⋯</b> أو أيقونة البوصلة ثم اختر <b>فتح في Safari</b> (أو <b>فتح في المتصفح</b>)، أو اضغط «نسخ الرابط» ثم الصقه في Safari.</div>
+
+<div class="card"><a class="btn go" href="./">فتح التطبيق الآن</a>
+<button class="btn cp" id="copy">نسخ رابط التطبيق</button>
+<small id="msg"></small></div>
+
+<div class="card" id="ios"><h2>على الأيفون (iPhone)</h2>
+<ol>
+<li>افتح الرابط في <b>Safari</b> (أيقونة البوصلة الزرقاء)، وليس داخل واتساب أو فيسبوك.</li>
+<li>اضغط زر <b>المشاركة</b> (مربع وفيه سهم للأعلى)، أو الأزرار <b>⋯</b> في الشريط السفلي ثم مشاركة.</li>
+<li>مرّر للأسفل واختر <b>إضافة إلى الشاشة الرئيسية</b>.</li>
+<li>اضغط <b>إضافة</b>. ستظهر أيقونة التطبيق على الشاشة الرئيسية، وافتحه منها دائماً.</li>
+</ol></div>
+
+<div class="card" id="and"><h2>على الأندرويد</h2>
+<ol>
+<li>الأفضل تنزيل التطبيق نفسه (APK) من الزر أدناه، ثم السماح بالتثبيت من مصدر غير معروف إن طُلب.</li>
+<li>أو افتح الرابط في Chrome، ثم النقاط الثلاث، ثم <b>تثبيت التطبيق</b> أو <b>إضافة إلى الشاشة الرئيسية</b>.</li>
+</ol>
+<a class="btn go" href="https://github.com/ebraham19511/almutaal-updates/releases/download/latest/almutaal-latest.apk">تنزيل تطبيق الأندرويد (APK)</a></div>
+
+<div class="card"><h2>تسجيل الدخول</h2>
+اختر <b>طالب</b> وأدخل اسمك الرباعي والرقم التعريفي (6 أرقام) الذي سلّمتك إياه المدرسة. إن نسيت الرقم فاتصل بالمدرسة (الأرقام في شاشة الدخول).</div>
+</main>
+<script>
+(function(){
+var ua=navigator.userAgent||"";
+var url=location.href.replace(/install\.html.*$/,"");
+if(/FBAN|FBAV|Instagram|Line\/|Snapchat|TikTok|Telegram|WhatsApp|MicroMessenger/i.test(ua)){document.getElementById("inapp").style.display="block"}
+var ios=/iPhone|iPad|iPod/i.test(ua), and=/Android/i.test(ua);
+if(ios)document.getElementById("and").classList.add("hide");
+if(and)document.getElementById("ios").classList.add("hide");
+document.getElementById("copy").onclick=function(){
+ var m=document.getElementById("msg");
+ function ok(){m.textContent="تم نسخ الرابط"}
+ function bad(){m.textContent="الرابط: "+url}
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(ok,bad)}else{bad()}
+};
+})();
+</script></body></html>
